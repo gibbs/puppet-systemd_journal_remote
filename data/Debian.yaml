@@ -1,0 +1,2 @@
+---
+systemd_journal_remote::command_path: /lib/systemd/systemd-journal-remote

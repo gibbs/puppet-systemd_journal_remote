@@ -1,0 +1,3 @@
+---
+systemd_journal_remote::command_path: /usr/lib/systemd/systemd-journal-remote
+systemd_journal_remote::manage_package: false

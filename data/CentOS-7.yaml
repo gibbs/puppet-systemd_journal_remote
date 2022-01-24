@@ -1,0 +1,3 @@
+---
+systemd_journal_remote::package_name: systemd-journal-gateway
+systemd_journal_remote::manage_output: true
