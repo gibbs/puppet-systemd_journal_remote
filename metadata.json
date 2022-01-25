@@ -1,5 +1,5 @@
 {
-  "name": "gibbs-systemd_journal_remote",
+  "name": "genv-systemd_journal_remote",
   "version": "0.1.0",
   "author": "Dan Gibbs <dev@dangibbs.co.uk>",
   "summary": "Installs, configures, and manages the systemd journal remote service",
@@ -22,7 +22,7 @@
     },
     {
       "name": "puppet-systemd",
-      "version_requirement": ">= 3.1.0"
+      "version_requirement": ">= 3.1.0 < 4.0.0"
     },
     {
       "name": "puppetlabs/inifile",
