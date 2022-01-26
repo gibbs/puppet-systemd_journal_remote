@@ -1,2 +1,4 @@
 ---
 systemd_journal_remote::command_path: /lib/systemd/systemd-journal-remote
+
+systemd_journal_remote::upload::command_path: /lib/systemd/systemd-journal-upload

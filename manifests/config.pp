@@ -16,12 +16,13 @@ class systemd_journal_remote::config {
     }
   }
 
-  systemd::dropin_file { 'service-override.conf':
-    unit    => "${systemd_journal_remote::service_name}.service",
-    content => epp("${module_name}/systemd-journal-remote.service-override.epp", {
+  systemd::dropin_file { 'systemd_journal_remote-remote_dropin':
+    filename => 'service-override.conf',
+    unit     => "${systemd_journal_remote::service_name}.service",
+    content  => epp("${module_name}/remote.service-override.epp", {
       'command_path'  => $systemd_journal_remote::command_path,
       'command_flags' => $systemd_journal_remote::command_flags,
     }),
-    notify  => Service[$systemd_journal_remote::service_name],
+    notify   => Service[$systemd_journal_remote::service_name],
   }
 }

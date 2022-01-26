@@ -36,21 +36,22 @@
 # @author Dan Gibbs <dev@dangibbs.co.uk>
 #
 class systemd_journal_remote (
-  Stdlib::Absolutepath $command_path                       = '/usr/lib/systemd/systemd-journal-remote',
-  Systemd_journal_remote::CommandFlags $command_flags      = {},
-  Boolean $manage_output                                   = false,
-  Boolean $manage_package                                  = true,
-  Boolean $manage_service                                  = true,
-  String $package_name                                     = 'systemd-journal-remote',
-  Enum['latest', 'absent', 'present'] $package_ensure      = present,
-  Boolean $service_enable                                  = true,
-  Stdlib::Ensure::Service $service_ensure                  = running,
-  String $service_name                                     = 'systemd-journal-remote',
-  Optional[Systemd_journal_remote::RemoteOptions] $options = {},
+  Stdlib::Absolutepath $command_path                        = '/usr/lib/systemd/systemd-journal-remote',
+  Systemd_Journal_Remote::Remote_Flags $command_flags       = {},
+  Boolean $manage_output                                    = false,
+  Boolean $manage_package                                   = true,
+  Boolean $manage_service                                   = true,
+  String $package_name                                      = 'systemd-journal-remote',
+  Enum['latest', 'absent', 'present'] $package_ensure       = present,
+  Boolean $service_enable                                   = true,
+  Stdlib::Ensure::Service $service_ensure                   = running,
+  String $service_name                                      = 'systemd-journal-remote',
+  Optional[Systemd_Journal_Remote::Remote_Options] $options = {},
 ) {
   contain systemd_journal_remote::install
   contain systemd_journal_remote::config
   contain systemd_journal_remote::service
+  contain systemd_journal_remote::upload
 
   Class['systemd_journal_remote::install']
   -> Class['systemd_journal_remote::config']
