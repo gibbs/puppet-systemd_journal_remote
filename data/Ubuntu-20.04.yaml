@@ -1,2 +1,3 @@
 ---
-systemd_journal_remote::command_path: /usr/lib/systemd/systemd-journal-remote
+# Journal Remote
+systemd_journal_remote::remote::command_path: /usr/lib/systemd/systemd-journal-remote

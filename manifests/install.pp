@@ -1,5 +1,5 @@
 # @summary
-#   This class installs the systemd-journal-remote package state
+#   This class installs the systemd-journal-remote package
 #
 # @api private
 #

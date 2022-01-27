@@ -1,9 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'include the systemd_journal_system::upload class' do
-
   pp = <<-MANIFEST
-    include ::systemd_journal_remote
     include ::systemd_journal_remote::upload
   MANIFEST
 

@@ -3,46 +3,54 @@
 #
 # @api private
 #
-class systemd_journal_remote::upload::config {
+class systemd_journal_remote::upload::config (
+  $command_path   = $systemd_journal_remote::upload::command_path,
+  $command_flags  = $systemd_journal_remote::upload::command_flags,
+  $manage_service = $systemd_journal_remote::upload::manage_service,
+  $options        = $systemd_journal_remote::upload::options,
+  $service_name   = $systemd_journal_remote::upload::service_name,
+) {
   assert_private()
 
-  $systemd_journal_remote::upload::options.each |$option, $value| {
-    ini_setting { $option:
+  $options.each |$setting, $value| {
+    ini_setting { "${module_name}-journal_upload_${setting}":
       path    => '/etc/systemd/journal-upload.conf',
       section => 'Upload',
-      setting => $option,
+      setting => $setting,
       value   => $value,
-      notify  => Service[$systemd_journal_remote::upload::service_name],
+      notify  => Service[$service_name],
     }
   }
 
-  # @fixme A better approach to managing argument variations
-  $options = $systemd_journal_remote::upload::command_flags.filter |$key, $value| {
-    $key in ['merge', 'system', 'user']
-  }
+  if $manage_service {
+    # @fixme A better approach to managing argument variations
+    $_options = $command_flags.filter |$key, $value| {
+      $key in ['merge', 'system', 'user']
+    }
 
-  $flags = $systemd_journal_remote::upload::command_flags.filter |$key, $value| {
-    $key in ['D', 'u']
-  }
+    $_flags = $command_flags.filter |$key, $value| {
+      $key in ['D', 'u']
+    }
 
-  $arguments = $systemd_journal_remote::upload::command_flags.filter |$key, $value| {
-    ($key in ['D', 'merge', 'system', 'u', 'user'] == false)
-  }
+    $_arguments = $command_flags.filter |$key, $value| {
+      ($key in ['D', 'merge', 'system', 'u', 'user'] == false)
+    }
 
-  # Formatted arguments
-  $command_arguments = [
-    $arguments.join_keys_to_values('=').prefix('--').join(' '),
-    $flags.join_keys_to_values('=').prefix('-').join(' '),
-    $options.keys.prefix('--').join(' ')
-  ].join(' ')
+    # Formatted arguments
+    $_command_arguments = [
+      $_arguments.join_keys_to_values('=').prefix('--').join(' '),
+      $_flags.join_keys_to_values('=').prefix('-').join(' '),
+      $_options.keys.prefix('--').join(' ')
+    ].join(' ')
 
-  systemd::dropin_file { 'systemd_journal_remote-upload_dropin':
-    filename => 'service-override.conf',
-    unit     => "${systemd_journal_remote::upload::service_name}.service",
-    content  => epp("${module_name}/upload.service-override.epp", {
-      'path'      => $systemd_journal_remote::upload::command_path,
-      'arguments' => $command_arguments,
-    }),
-    notify   => Service[$systemd_journal_remote::upload::service_name],
+    systemd::dropin_file { "${module_name}-upload_dropin":
+      filename => 'service-override.conf',
+      unit     => sprintf('%s.service', $service_name),
+      content  => epp("${module_name}/upload.service-override.epp", {
+        'path'      => $command_path,
+        'arguments' => $_command_arguments,
+      }),
+      notify   => Service[$service_name],
+    }
   }
 }

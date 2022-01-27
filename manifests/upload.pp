@@ -27,11 +27,14 @@ class systemd_journal_remote::upload (
   Stdlib::Absolutepath $command_path                        = '/usr/lib/systemd/systemd-journal-upload',
   Systemd_Journal_Remote::Upload_Flags $command_flags       = {},
   Boolean $manage_service                                   = true,
+  Boolean $manage_state                                     = false,
   Boolean $service_enable                                   = true,
   Stdlib::Ensure::Service $service_ensure                   = running,
   String $service_name                                      = 'systemd-journal-upload',
   Optional[Systemd_Journal_Remote::Upload_Options] $options = {},
 ) {
+  require systemd_journal_remote
+
   contain systemd_journal_remote::upload::config
   contain systemd_journal_remote::upload::service
 
