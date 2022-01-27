@@ -1,6 +1,6 @@
 {
   "name": "genv-systemd_journal_remote",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Dan Gibbs <dev@dangibbs.co.uk>",
   "summary": "Installs, configures, and manages the systemd journal remote service",
   "license": "MIT",
@@ -61,6 +61,18 @@
     },
     {
       "operatingsystem": "Archlinux"
+    },
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8"
+      ]
     }
   ],
   "requirements": [
