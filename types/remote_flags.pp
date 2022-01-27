@@ -1,4 +1,4 @@
-# Matches systemd remote options
+# Matches systemd remote options in `man systemd-journal-remote`
 type Systemd_Journal_Remote::Remote_Flags = Struct[
   {
     Optional['url']          => Variant[Stdlib::HTTPUrl,Stdlib::HTTPSUrl],

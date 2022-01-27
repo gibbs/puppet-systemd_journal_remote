@@ -15,6 +15,9 @@
 # @param manage_service
 #   Manage the systemd-journal-remote service
 #
+# @param service_enable
+#   Enable the systemd-journal-remote service
+#
 # @param service_ensure
 #   Ensure the systemd-journal-remote state
 #

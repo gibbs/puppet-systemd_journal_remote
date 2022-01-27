@@ -1,8 +1,2 @@
 ---
 systemd_journal_remote::manage_package: false
-
-# Journal Remote
-systemd_journal_remote::remote::command_path: /usr/lib/systemd/systemd-journal-remote
-
-# Journal Upload
-systemd_journal_remote::upload::command_path: /usr/lib/systemd/systemd-journal-upload

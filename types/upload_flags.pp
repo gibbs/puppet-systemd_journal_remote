@@ -1,4 +1,4 @@
-# Matches systemd upload options
+# Matches systemd upload options in `man systemd-journal-upload`
 type Systemd_Journal_Remote::Upload_Flags = Struct[
   {
     Optional['u']            => Variant[Stdlib::Host,Stdlib::HTTPUrl,Stdlib::HTTPSUrl],

@@ -4,3 +4,6 @@ systemd_journal_remote::remote::command_path: /lib/systemd/systemd-journal-remot
 
 # Journal Upload
 systemd_journal_remote::upload::command_path: /lib/systemd/systemd-journal-upload
+
+# Journal Gateway Daemon
+systemd_journal_remote::gatewayd::command_path: /lib/systemd/systemd-journal-gatewayd
