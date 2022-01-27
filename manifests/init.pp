@@ -4,13 +4,13 @@
 # @api public
 #
 # @param manage_package
-#   Manage the package installation
+#   Manage the `systemd-journal-remote` package installation
 #
 # @param package_name
-#   The systemd-journal-remote package name to use
+#   The `systemd-journal-remote` package name to use
 #
 # @param package_ensure
-#   Ensure the systemd-journal-remote package state
+#   The `systemd-journal-remote` package state
 #
 # @author Dan Gibbs <dev@dangibbs.co.uk>
 #

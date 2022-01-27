@@ -1,22 +1,22 @@
 # @summary
-#   This class manages and configures the systemd journal gatewayd service
+#   This class manages and configures the `systemd-journal-gatewayd` service
 #
 # @api public
 #
 # @param command_path
-#   The systemd-journal-gatewayd systemd command path
+#   The service ExecStart command path
 #
 # @param command_flags
-#   The systemd-journal-gatewayd ExecStart command flags to use in service file
+#   The service ExecStart command flags to use
 #
 # @param manage_service
-#   Manage the systemd-journal-gatewayd service
+#   Manage the journal-gatewayd service
 #
 # @param service_enable
-#   Enable the systemd-journal-gatewayd service
+#   Enable the journal-gatewayd service
 #
 # @param service_name
-#   The systemd-journal-gatewayd service name
+#   The journal-gatewayd service name
 #
 # @author Dan Gibbs <dev@dangibbs.co.uk>
 #

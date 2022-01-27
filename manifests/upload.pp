@@ -4,22 +4,22 @@
 # @api public
 #
 # @param command_path
-#   The systemd-journal-upload systemd command path
+#   The service ExecStart command path
 #
 # @param command_flags
-#   The systemd-journal-upload ExecStart command flags to use in service file
+#   The service ExecStart command flags to use
 #
 # @param manage_service
-#   Manage the systemd-journal-upload service
+#   Manage the journal-upload service
 #
 # @param service_enable
-#   Enable the systemd-journal-upload service
+#   Enable the journal-upload service
 #
 # @param service_ensure
-#   Ensure the systemd-journal-upload state
+#   Ensure the journal-upload state
 #
 # @param service_name
-#   The systemd-journal-upload service name
+#   The journal-upload service name
 #
 # @param options
 #   Config hash to configure the [Upload] options in journal-upload.conf

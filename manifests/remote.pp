@@ -4,28 +4,28 @@
 # @api public
 #
 # @param command_path
-#   The systemd-journal-remote systemd command path
+#   The service ExecStart command path
 #
 # @param command_flags
-#   The systemd-journal-remote ExecStart command flags to use in service file
+#   The service ExecStart command flags to use
 #
 # @param manage_output
-#   Manage the default output paths (/var/log/journal/remote/)
+#   Manage the creation of the default output paths (/var/log/journal/remote/)
 #
 # @param manage_service
-#   Manage the systemd-journal-remote service
+#   Manage the `systemd-journal-remote` service
 #
 # @param service_enable
-#   Enable the systemd-journal-remote service
+#   Enable the journal-remote service
 #
 # @param service_ensure
-#   Ensure the systemd-journal-remote state
+#   Ensure the journal-remote service state
 #
 # @param service_name
-#   The systemd-journal-remote service name
+#   The journal-remote service name
 #
 # @param options
-#   Config hash to configure the [Remote] options in journal-remote.conf
+#   Config hash to configure the [Remote] options in `journal-remote.conf`
 #
 # @author Dan Gibbs <dev@dangibbs.co.uk>
 #
