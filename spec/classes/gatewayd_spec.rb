@@ -7,8 +7,6 @@ describe 'systemd_journal_remote::gatewayd' do
       context "on #{os}" do
         let(:facts) { facts }
 
-        distro = facts[:os]['distro']['id'] + facts[:os]['distro']['release']['major']
-
         # Catalogue compilation
         it { is_expected.to compile.with_all_deps }
 
@@ -32,6 +30,66 @@ describe 'systemd_journal_remote::gatewayd' do
         it {
           is_expected.to contain_file('/etc/systemd/system/systemd-journal-gatewayd.service.d/service-override.conf')
         }
+
+        context 'when adding all command flags' do
+          let(:params) do
+            {
+              command_flags: {
+                'cert'      => '/tmp/cert',
+                'key'       => '/tmp/key',
+                'trust'     => '/tmp/trust',
+                'system'    => true,
+                'user'      => true,
+                'merge'     => true,
+                'D'         => '/tmp/D',
+                'directory' => '/tmp/directory',
+                'file'      => '*',
+              }
+            }
+          end
+
+          # args/flags/options ordered
+          command_flags = [
+            ' ',
+            '--cert=/tmp/cert',
+            '--key=/tmp/key',
+            '--trust=/tmp/trust',
+            '--directory=/tmp/directory',
+            '--file=*',
+            '-D /tmp/D',
+            '--system',
+            '--user',
+            '--merge',
+          ].join(' ')
+
+          it {
+            is_expected.to compile.with_all_deps
+            verify_contents(catalogue, '/etc/systemd/system/systemd-journal-gatewayd.service.d/service-override.conf', [
+              command_flags,
+            ])
+          }
+        end
+
+        context 'false options supplied should not exist' do
+          let(:params) do
+            {
+              command_flags: {
+                'cert'      => '/tmp/cert',
+                'system'    => false,
+                'user'      => false,
+                'merge'     => true,
+                'D'         => '/tmp/D',
+              }
+            }
+          end
+
+          it {
+            is_expected.to compile.with_all_deps
+            verify_contents(catalogue, '/etc/systemd/system/systemd-journal-gatewayd.service.d/service-override.conf', [
+              '  --cert=/tmp/cert -D /tmp/D --merge',
+            ])
+          }
+        end
       end
     end
   end

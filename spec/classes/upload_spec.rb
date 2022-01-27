@@ -88,6 +88,78 @@ describe 'systemd_journal_remote::upload' do
 
           it { is_expected.not_to compile.with_all_deps }
         end
+
+        context 'when adding all command flags' do
+          let(:params) do
+            {
+              command_flags: {
+                'u'            => 'http://localhost:19532',
+                'url'          => 'http://localhost:19532',
+                'system'       => true,
+                'user'         => true,
+                'merge'        => true,
+                'D'            => '/tmp/D',
+                'directory'    => '/tmp/directory',
+                'file'         => '*',
+                'cursor'       => 's2',
+                'after-cursor' => 's1',
+                'save-state'   => '/tmp/state',
+                'follow'       => true,
+                'key'          => '/tmp/key',
+                'cert'         => '/tmp/cert',
+                'trust'        => '/tmp/trust',
+              }
+            }
+          end
+
+          # args/flags/options ordered
+          command_flags = [
+            ' ',
+            '--url=http://localhost:19532',
+            '--directory=/tmp/directory',
+            '--file=*',
+            '--cursor=s2',
+            '--after-cursor=s1',
+            '--save-state=/tmp/state',
+            '--follow=true',
+            '--key=/tmp/key',
+            '--cert=/tmp/cert',
+            '--trust=/tmp/trust',
+            '-u http://localhost:19532',
+            '-D /tmp/D',
+            '--system',
+            '--user',
+            '--merge',
+          ].join(' ')
+
+          it {
+            is_expected.to compile.with_all_deps
+            verify_contents(catalogue, '/etc/systemd/system/systemd-journal-upload.service.d/service-override.conf', [
+              command_flags,
+            ])
+          }
+        end
+
+        context 'false options supplied should not exist' do
+          let(:params) do
+            {
+              command_flags: {
+                'cert'      => '/tmp/cert',
+                'system'    => false,
+                'user'      => false,
+                'merge'     => true,
+                'D'         => '/tmp/D',
+              }
+            }
+          end
+
+          it {
+            is_expected.to compile.with_all_deps
+            verify_contents(catalogue, '/etc/systemd/system/systemd-journal-upload.service.d/service-override.conf', [
+              '  --cert=/tmp/cert -D /tmp/D --merge',
+            ])
+          }
+        end
       end
     end
   end

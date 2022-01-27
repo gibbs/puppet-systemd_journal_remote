@@ -32,6 +32,6 @@ describe 'include the systemd_journal_system::gatewayd class' do
   end
 
   describe command('curl -s -o /dev/null -w "%{http_code}" -H"Accept: application/vnd.fdo.journal" http://localhost:19531/machine') do
-    its(:stdout) { should match /200/ }
+    its(:stdout) { is_expected.to match(%r{200}) }
   end
 end

@@ -14,7 +14,7 @@ class systemd_journal_remote::gatewayd::config (
   if $manage_service {
     # @fixme A better approach to managing argument variations
     $_options = $command_flags.filter |$key, $value| {
-      $key in ['merge', 'system', 'user']
+      ($key in ['merge', 'system', 'user'] and $value == true)
     }
 
     $_flags = $command_flags.filter |$key, $value| {
@@ -28,7 +28,7 @@ class systemd_journal_remote::gatewayd::config (
     # Formatted arguments
     $_command_arguments = [
       $_arguments.join_keys_to_values('=').prefix('--').join(' '),
-      $_flags.join_keys_to_values('=').prefix('-').join(' '),
+      $_flags.join_keys_to_values(' ').prefix('-').join(' '),
       $_options.keys.prefix('--').join(' ')
     ].join(' ')
 
