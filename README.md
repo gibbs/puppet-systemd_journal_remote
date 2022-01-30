@@ -95,6 +95,9 @@ To send journal events over HTTPS using Puppet certificates:
 ```puppet
 # Upload over HTTPS with Puppet certificates
 class { '::systemd_journal_remote::upload':
+  command_flags => {
+    'save-state' => '/var/lib/systemd/journal-upload/state',
+  },
   options       => {
     'URL'                    => 'https://0.0.0.0:19532',
     'ServerKeyFile'          => "/etc/puppetlabs/puppet/ssl/private_keys/${trusted['certname']}.pem",
