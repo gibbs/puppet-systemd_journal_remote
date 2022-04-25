@@ -7,14 +7,6 @@
   "source": "https://github.com/gibbs/puppet-systemd_journal_remote",
   "project_page": "https://github.com/gibbs/puppet-systemd_journal_remote",
   "issues_url": "https://github.com/gibbs/puppet-systemd_journal_remote/issues",
-  "tags": [
-    "journald",
-    "journal",
-    "journal-remote",
-    "journald-remote",
-    "systemd",
-    "systemd-journal-remote"
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -81,7 +73,15 @@
       "version_requirement": ">= 6.21.0 < 8.0.0"
     }
   ],
-  "pdk-version": "2.3.0",
-  "template-url": "pdk-default#2.3.0",
+  "tags": [
+    "journald",
+    "journal",
+    "journal-remote",
+    "journald-remote",
+    "systemd",
+    "systemd-journal-remote"
+  ],
+  "pdk-version": "2.4.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#2.3.0",
   "template-ref": "tags/2.3.0-0-g8aaceff"
 }

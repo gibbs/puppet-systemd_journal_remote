@@ -4,8 +4,6 @@
 .yardoc
 .yardwarns
 *.iml
-/.vscode/
-/.devcontainer/
 /.bundle/
 /.idea/
 /.vagrant/
@@ -28,3 +26,9 @@
 .envrc
 /inventory.yaml
 /spec/fixtures/litmus_inventory.yaml
+/[Bb]ackup*/
+/.devcontainer/
+/.gitlab-ci.yml
+/.travis.yml
+/.vscode/
+/appveyor.yml
