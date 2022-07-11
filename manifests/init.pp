@@ -19,7 +19,6 @@ class systemd_journal_remote (
   String $package_name                                = 'systemd-journal-remote',
   Enum['latest', 'absent', 'present'] $package_ensure = present,
 ) {
-
   if $manage_package {
     package { $package_name:
       ensure => $package_ensure,

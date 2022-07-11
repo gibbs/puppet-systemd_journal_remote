@@ -15,6 +15,9 @@
 # @param service_enable
 #   Enable the journal-gatewayd service
 #
+# @param service_ensure
+#   The journal-gatewayd service ensure state
+#
 # @param service_name
 #   The journal-gatewayd service name
 #

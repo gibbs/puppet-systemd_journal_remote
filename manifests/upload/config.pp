@@ -4,11 +4,11 @@
 # @api private
 #
 class systemd_journal_remote::upload::config (
-  $command_path   = $systemd_journal_remote::upload::command_path,
-  $command_flags  = $systemd_journal_remote::upload::command_flags,
-  $manage_service = $systemd_journal_remote::upload::manage_service,
-  $options        = $systemd_journal_remote::upload::options,
-  $service_name   = $systemd_journal_remote::upload::service_name,
+  Stdlib::Absolutepath $command_path                   = $systemd_journal_remote::upload::command_path,
+  Systemd_Journal_Remote::Upload_Flags $command_flags  = $systemd_journal_remote::upload::command_flags,
+  Boolean $manage_service                              = $systemd_journal_remote::upload::manage_service,
+  Systemd_Journal_Remote::Upload_Options $options      = $systemd_journal_remote::upload::options,
+  String $service_name                                 = $systemd_journal_remote::upload::service_name,
 ) {
   assert_private()
 
@@ -40,7 +40,7 @@ class systemd_journal_remote::upload::config (
     $_command_arguments = [
       $_arguments.join_keys_to_values('=').prefix('--').join(' '),
       $_flags.join_keys_to_values(' ').prefix('-').join(' '),
-      $_options.keys.prefix('--').join(' ')
+      $_options.keys.prefix('--').join(' '),
     ].join(' ')
 
     systemd::dropin_file { "${module_name}-upload_dropin":

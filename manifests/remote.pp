@@ -37,7 +37,7 @@ class systemd_journal_remote::remote (
   Boolean $service_enable                                   = true,
   Stdlib::Ensure::Service $service_ensure                   = running,
   String $service_name                                      = 'systemd-journal-remote',
-  Optional[Systemd_Journal_Remote::Remote_Options] $options = {},
+  Systemd_Journal_Remote::Remote_Options $options           = {},
 ) {
   require systemd_journal_remote
 

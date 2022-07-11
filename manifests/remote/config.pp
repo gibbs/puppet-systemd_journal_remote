@@ -4,11 +4,11 @@
 # @api private
 #
 class systemd_journal_remote::remote::config (
-  $command_path   = $systemd_journal_remote::remote::command_path,
-  $command_flags  = $systemd_journal_remote::remote::command_flags,
-  $manage_service = $systemd_journal_remote::remote::manage_service,
-  $options        = $systemd_journal_remote::remote::options,
-  $service_name   = $systemd_journal_remote::remote::service_name,
+  Stdlib::Absolutepath $command_path                     = $systemd_journal_remote::remote::command_path,
+  Systemd_Journal_Remote::Remote_Flags $command_flags    = $systemd_journal_remote::remote::command_flags,
+  Boolean $manage_service                                = $systemd_journal_remote::remote::manage_service,
+  Systemd_Journal_Remote::Remote_Options $options        = $systemd_journal_remote::remote::options,
+  String $service_name                                   = $systemd_journal_remote::remote::service_name,
 ) {
   assert_private()
 
