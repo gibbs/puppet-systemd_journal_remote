@@ -4,11 +4,11 @@
 # @api private
 #
 class systemd_journal_remote::remote::service (
-  $manage_output  = $systemd_journal_remote::remote::manage_output,
-  $manage_service = $systemd_journal_remote::remote::manage_service,
-  $service_enable = $systemd_journal_remote::remote::service_enable,
-  $service_ensure = $systemd_journal_remote::remote::service_ensure,
-  $service_name   = $systemd_journal_remote::remote::service_name,
+  Boolean $manage_output                  = $systemd_journal_remote::remote::manage_output,
+  Boolean $manage_service                 = $systemd_journal_remote::remote::manage_service,
+  Boolean $service_enable                 = $systemd_journal_remote::remote::service_enable,
+  Stdlib::Ensure::Service $service_ensure = $systemd_journal_remote::remote::service_ensure,
+  String $service_name                    = $systemd_journal_remote::remote::service_name,
 ) {
   assert_private()
 

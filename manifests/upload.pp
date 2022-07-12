@@ -12,6 +12,9 @@
 # @param manage_service
 #   Manage the journal-upload service
 #
+# @param manage_state
+#   Manage the journal-upload state file creation
+#
 # @param service_enable
 #   Enable the journal-upload service
 #
@@ -34,7 +37,7 @@ class systemd_journal_remote::upload (
   Boolean $service_enable                                   = true,
   Stdlib::Ensure::Service $service_ensure                   = running,
   String $service_name                                      = 'systemd-journal-upload',
-  Optional[Systemd_Journal_Remote::Upload_Options] $options = {},
+  Systemd_Journal_Remote::Upload_Options $options           = {},
 ) {
   require systemd_journal_remote
 

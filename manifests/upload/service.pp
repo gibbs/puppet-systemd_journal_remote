@@ -4,11 +4,11 @@
 # @api private
 #
 class systemd_journal_remote::upload::service (
-  $manage_service = $systemd_journal_remote::upload::manage_service,
-  $manage_state   = $systemd_journal_remote::upload::manage_state,
-  $service_enable = $systemd_journal_remote::upload::service_enable,
-  $service_ensure = $systemd_journal_remote::upload::service_ensure,
-  $service_name   = $systemd_journal_remote::upload::service_name,
+  Boolean $manage_service                 = $systemd_journal_remote::upload::manage_service,
+  Boolean $manage_state                   = $systemd_journal_remote::upload::manage_state,
+  Boolean $service_enable                 = $systemd_journal_remote::upload::service_enable,
+  Stdlib::Ensure::Service $service_ensure = $systemd_journal_remote::upload::service_ensure,
+  String $service_name                    = $systemd_journal_remote::upload::service_name,
 ) {
   assert_private()
 
