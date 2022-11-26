@@ -34,8 +34,7 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "11",
-        "10",
-        "9"
+        "10"
       ]
     },
     {
@@ -56,8 +55,7 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "7",
-        "8"
+        "7"
       ]
     },
     {
