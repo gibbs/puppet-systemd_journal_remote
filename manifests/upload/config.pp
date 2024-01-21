@@ -47,8 +47,8 @@ class systemd_journal_remote::upload::config (
       filename => 'service-override.conf',
       unit     => sprintf('%s.service', $service_name),
       content  => epp("${module_name}/upload.service-override.epp", {
-        'path'      => $command_path,
-        'arguments' => $_command_arguments,
+          'path'      => $command_path,
+          'arguments' => $_command_arguments,
       }),
       notify   => Service[$service_name],
     }

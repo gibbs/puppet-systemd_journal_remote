@@ -9,9 +9,9 @@
 #### Public Classes
 
 * [`systemd_journal_remote`](#systemd_journal_remote): This module manages and configures the systemd journal remote package
-* [`systemd_journal_remote::gatewayd`](#systemd_journal_remotegatewayd): This class manages and configures the `systemd-journal-gatewayd` service
-* [`systemd_journal_remote::remote`](#systemd_journal_remoteremote): This module manages and configures the systemd journal remote package
-* [`systemd_journal_remote::upload`](#systemd_journal_remoteupload): This class manages and configures the systemd journal upload service
+* [`systemd_journal_remote::gatewayd`](#systemd_journal_remote--gatewayd): This class manages and configures the `systemd-journal-gatewayd` service
+* [`systemd_journal_remote::remote`](#systemd_journal_remote--remote): This module manages and configures the systemd journal remote package
+* [`systemd_journal_remote::upload`](#systemd_journal_remote--upload): This class manages and configures the systemd journal upload service
 
 #### Private Classes
 
@@ -24,11 +24,11 @@
 
 ### Data types
 
-* [`Systemd_Journal_Remote::Gatewayd_Flags`](#systemd_journal_remotegatewayd_flags): Matches systemd gatewayd options in `man systemd-journal-gatewayd`
-* [`Systemd_Journal_Remote::Remote_Flags`](#systemd_journal_remoteremote_flags): Matches systemd remote options in `man systemd-journal-remote`
-* [`Systemd_Journal_Remote::Remote_Options`](#systemd_journal_remoteremote_options): Matches systemd remote options in `man journal-remote.conf`
-* [`Systemd_Journal_Remote::Upload_Flags`](#systemd_journal_remoteupload_flags): Matches systemd upload options in `man systemd-journal-upload`
-* [`Systemd_Journal_Remote::Upload_Options`](#systemd_journal_remoteupload_options): Matches systemd upload options in `man journal-upload.conf`
+* [`Systemd_Journal_Remote::Gatewayd_Flags`](#Systemd_Journal_Remote--Gatewayd_Flags): Matches systemd gatewayd options in `man systemd-journal-gatewayd`
+* [`Systemd_Journal_Remote::Remote_Flags`](#Systemd_Journal_Remote--Remote_Flags): Matches systemd remote options in `man systemd-journal-remote`
+* [`Systemd_Journal_Remote::Remote_Options`](#Systemd_Journal_Remote--Remote_Options): Matches systemd remote options in `man journal-remote.conf`
+* [`Systemd_Journal_Remote::Upload_Flags`](#Systemd_Journal_Remote--Upload_Flags): Matches systemd upload options in `man systemd-journal-upload`
+* [`Systemd_Journal_Remote::Upload_Options`](#Systemd_Journal_Remote--Upload_Options): Matches systemd upload options in `man journal-upload.conf`
 
 ## Classes
 
@@ -40,19 +40,19 @@ This module manages and configures the systemd journal remote package
 
 The following parameters are available in the `systemd_journal_remote` class:
 
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`package_ensure`](#package_ensure)
+* [`manage_package`](#-systemd_journal_remote--manage_package)
+* [`package_name`](#-systemd_journal_remote--package_name)
+* [`package_ensure`](#-systemd_journal_remote--package_ensure)
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-systemd_journal_remote--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 Manage the `systemd-journal-remote` package installation
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-systemd_journal_remote--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -60,7 +60,7 @@ The `systemd-journal-remote` package name to use
 
 Default value: `'systemd-journal-remote'`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-systemd_journal_remote--package_ensure"></a>`package_ensure`
 
 Data type: `Enum['latest', 'absent', 'present']`
 
@@ -68,7 +68,7 @@ The `systemd-journal-remote` package state
 
 Default value: `present`
 
-### <a name="systemd_journal_remotegatewayd"></a>`systemd_journal_remote::gatewayd`
+### <a name="systemd_journal_remote--gatewayd"></a>`systemd_journal_remote::gatewayd`
 
 This class manages and configures the `systemd-journal-gatewayd` service
 
@@ -76,14 +76,14 @@ This class manages and configures the `systemd-journal-gatewayd` service
 
 The following parameters are available in the `systemd_journal_remote::gatewayd` class:
 
-* [`command_path`](#command_path)
-* [`command_flags`](#command_flags)
-* [`manage_service`](#manage_service)
-* [`service_enable`](#service_enable)
-* [`service_name`](#service_name)
-* [`service_ensure`](#service_ensure)
+* [`command_path`](#-systemd_journal_remote--gatewayd--command_path)
+* [`command_flags`](#-systemd_journal_remote--gatewayd--command_flags)
+* [`manage_service`](#-systemd_journal_remote--gatewayd--manage_service)
+* [`service_enable`](#-systemd_journal_remote--gatewayd--service_enable)
+* [`service_ensure`](#-systemd_journal_remote--gatewayd--service_ensure)
+* [`service_name`](#-systemd_journal_remote--gatewayd--service_name)
 
-##### <a name="command_path"></a>`command_path`
+##### <a name="-systemd_journal_remote--gatewayd--command_path"></a>`command_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -91,7 +91,7 @@ The service ExecStart command path
 
 Default value: `'/usr/lib/systemd/systemd-journal-gatewayd'`
 
-##### <a name="command_flags"></a>`command_flags`
+##### <a name="-systemd_journal_remote--gatewayd--command_flags"></a>`command_flags`
 
 Data type: `Systemd_Journal_Remote::Gatewayd_Flags`
 
@@ -99,23 +99,31 @@ The service ExecStart command flags to use
 
 Default value: `{}`
 
-##### <a name="manage_service"></a>`manage_service`
+##### <a name="-systemd_journal_remote--gatewayd--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
 Manage the journal-gatewayd service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-systemd_journal_remote--gatewayd--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 Enable the journal-gatewayd service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-systemd_journal_remote--gatewayd--service_ensure"></a>`service_ensure`
+
+Data type: `Stdlib::Ensure::Service`
+
+The journal-gatewayd service ensure state
+
+Default value: `running`
+
+##### <a name="-systemd_journal_remote--gatewayd--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -123,15 +131,7 @@ The journal-gatewayd service name
 
 Default value: `'systemd-journal-gatewayd'`
 
-##### <a name="service_ensure"></a>`service_ensure`
-
-Data type: `Stdlib::Ensure::Service`
-
-
-
-Default value: `running`
-
-### <a name="systemd_journal_remoteremote"></a>`systemd_journal_remote::remote`
+### <a name="systemd_journal_remote--remote"></a>`systemd_journal_remote::remote`
 
 This module manages and configures the systemd journal remote package
 
@@ -139,16 +139,16 @@ This module manages and configures the systemd journal remote package
 
 The following parameters are available in the `systemd_journal_remote::remote` class:
 
-* [`command_path`](#command_path)
-* [`command_flags`](#command_flags)
-* [`manage_output`](#manage_output)
-* [`manage_service`](#manage_service)
-* [`service_enable`](#service_enable)
-* [`service_ensure`](#service_ensure)
-* [`service_name`](#service_name)
-* [`options`](#options)
+* [`command_path`](#-systemd_journal_remote--remote--command_path)
+* [`command_flags`](#-systemd_journal_remote--remote--command_flags)
+* [`manage_output`](#-systemd_journal_remote--remote--manage_output)
+* [`manage_service`](#-systemd_journal_remote--remote--manage_service)
+* [`service_enable`](#-systemd_journal_remote--remote--service_enable)
+* [`service_ensure`](#-systemd_journal_remote--remote--service_ensure)
+* [`service_name`](#-systemd_journal_remote--remote--service_name)
+* [`options`](#-systemd_journal_remote--remote--options)
 
-##### <a name="command_path"></a>`command_path`
+##### <a name="-systemd_journal_remote--remote--command_path"></a>`command_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -156,7 +156,7 @@ The service ExecStart command path
 
 Default value: `'/usr/lib/systemd/systemd-journal-remote'`
 
-##### <a name="command_flags"></a>`command_flags`
+##### <a name="-systemd_journal_remote--remote--command_flags"></a>`command_flags`
 
 Data type: `Systemd_Journal_Remote::Remote_Flags`
 
@@ -164,31 +164,31 @@ The service ExecStart command flags to use
 
 Default value: `{}`
 
-##### <a name="manage_output"></a>`manage_output`
+##### <a name="-systemd_journal_remote--remote--manage_output"></a>`manage_output`
 
 Data type: `Boolean`
 
 Manage the creation of the default output paths (/var/log/journal/remote/)
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="manage_service"></a>`manage_service`
+##### <a name="-systemd_journal_remote--remote--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
 Manage the `systemd-journal-remote` service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-systemd_journal_remote--remote--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 Enable the journal-remote service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-systemd_journal_remote--remote--service_ensure"></a>`service_ensure`
 
 Data type: `Stdlib::Ensure::Service`
 
@@ -196,7 +196,7 @@ Ensure the journal-remote service state
 
 Default value: `running`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-systemd_journal_remote--remote--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -204,15 +204,15 @@ The journal-remote service name
 
 Default value: `'systemd-journal-remote'`
 
-##### <a name="options"></a>`options`
+##### <a name="-systemd_journal_remote--remote--options"></a>`options`
 
-Data type: `Optional[Systemd_Journal_Remote::Remote_Options]`
+Data type: `Systemd_Journal_Remote::Remote_Options`
 
 Config hash to configure the [Remote] options in `journal-remote.conf`
 
 Default value: `{}`
 
-### <a name="systemd_journal_remoteupload"></a>`systemd_journal_remote::upload`
+### <a name="systemd_journal_remote--upload"></a>`systemd_journal_remote::upload`
 
 This class manages and configures the systemd journal upload service
 
@@ -220,16 +220,16 @@ This class manages and configures the systemd journal upload service
 
 The following parameters are available in the `systemd_journal_remote::upload` class:
 
-* [`command_path`](#command_path)
-* [`command_flags`](#command_flags)
-* [`manage_service`](#manage_service)
-* [`service_enable`](#service_enable)
-* [`service_ensure`](#service_ensure)
-* [`service_name`](#service_name)
-* [`options`](#options)
-* [`manage_state`](#manage_state)
+* [`command_path`](#-systemd_journal_remote--upload--command_path)
+* [`command_flags`](#-systemd_journal_remote--upload--command_flags)
+* [`manage_service`](#-systemd_journal_remote--upload--manage_service)
+* [`manage_state`](#-systemd_journal_remote--upload--manage_state)
+* [`service_enable`](#-systemd_journal_remote--upload--service_enable)
+* [`service_ensure`](#-systemd_journal_remote--upload--service_ensure)
+* [`service_name`](#-systemd_journal_remote--upload--service_name)
+* [`options`](#-systemd_journal_remote--upload--options)
 
-##### <a name="command_path"></a>`command_path`
+##### <a name="-systemd_journal_remote--upload--command_path"></a>`command_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -237,7 +237,7 @@ The service ExecStart command path
 
 Default value: `'/usr/lib/systemd/systemd-journal-upload'`
 
-##### <a name="command_flags"></a>`command_flags`
+##### <a name="-systemd_journal_remote--upload--command_flags"></a>`command_flags`
 
 Data type: `Systemd_Journal_Remote::Upload_Flags`
 
@@ -245,23 +245,31 @@ The service ExecStart command flags to use
 
 Default value: `{}`
 
-##### <a name="manage_service"></a>`manage_service`
+##### <a name="-systemd_journal_remote--upload--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
 Manage the journal-upload service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-systemd_journal_remote--upload--manage_state"></a>`manage_state`
+
+Data type: `Boolean`
+
+Manage the journal-upload state file creation
+
+Default value: `false`
+
+##### <a name="-systemd_journal_remote--upload--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 Enable the journal-upload service
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-systemd_journal_remote--upload--service_ensure"></a>`service_ensure`
 
 Data type: `Stdlib::Ensure::Service`
 
@@ -269,7 +277,7 @@ Ensure the journal-upload state
 
 Default value: `running`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-systemd_journal_remote--upload--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -277,25 +285,17 @@ The journal-upload service name
 
 Default value: `'systemd-journal-upload'`
 
-##### <a name="options"></a>`options`
+##### <a name="-systemd_journal_remote--upload--options"></a>`options`
 
-Data type: `Optional[Systemd_Journal_Remote::Upload_Options]`
+Data type: `Systemd_Journal_Remote::Upload_Options`
 
 Config hash to configure the [Upload] options in journal-upload.conf
 
 Default value: `{}`
 
-##### <a name="manage_state"></a>`manage_state`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
 ## Data types
 
-### <a name="systemd_journal_remotegatewayd_flags"></a>`Systemd_Journal_Remote::Gatewayd_Flags`
+### <a name="Systemd_Journal_Remote--Gatewayd_Flags"></a>`Systemd_Journal_Remote::Gatewayd_Flags`
 
 Matches systemd gatewayd options in `man systemd-journal-gatewayd`
 
@@ -315,7 +315,7 @@ Struct[{
   }]
 ```
 
-### <a name="systemd_journal_remoteremote_flags"></a>`Systemd_Journal_Remote::Remote_Flags`
+### <a name="Systemd_Journal_Remote--Remote_Flags"></a>`Systemd_Journal_Remote::Remote_Flags`
 
 Matches systemd remote options in `man systemd-journal-remote`
 
@@ -340,7 +340,7 @@ Struct[{
   }]
 ```
 
-### <a name="systemd_journal_remoteremote_options"></a>`Systemd_Journal_Remote::Remote_Options`
+### <a name="Systemd_Journal_Remote--Remote_Options"></a>`Systemd_Journal_Remote::Remote_Options`
 
 Matches systemd remote options in `man journal-remote.conf`
 
@@ -356,7 +356,7 @@ Struct[{
   }]
 ```
 
-### <a name="systemd_journal_remoteupload_flags"></a>`Systemd_Journal_Remote::Upload_Flags`
+### <a name="Systemd_Journal_Remote--Upload_Flags"></a>`Systemd_Journal_Remote::Upload_Flags`
 
 Matches systemd upload options in `man systemd-journal-upload`
 
@@ -382,7 +382,7 @@ Struct[{
   }]
 ```
 
-### <a name="systemd_journal_remoteupload_options"></a>`Systemd_Journal_Remote::Upload_Options`
+### <a name="Systemd_Journal_Remote--Upload_Options"></a>`Systemd_Journal_Remote::Upload_Options`
 
 Matches systemd upload options in `man journal-upload.conf`
 

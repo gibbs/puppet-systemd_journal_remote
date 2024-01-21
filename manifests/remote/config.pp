@@ -27,8 +27,8 @@ class systemd_journal_remote::remote::config (
       filename => 'service-override.conf',
       unit     => sprintf('%s.service', $service_name),
       content  => epp("${module_name}/remote.service-override.epp", {
-        'command_path'  => $command_path,
-        'command_flags' => $command_flags,
+          'command_path'  => $command_path,
+          'command_flags' => $command_flags,
       }),
       notify   => Service[$service_name],
     }
