@@ -36,8 +36,8 @@ class systemd_journal_remote::gatewayd::config (
       filename => 'service-override.conf',
       unit     => sprintf('%s.service', $service_name),
       content  => epp("${module_name}/gatewayd.service-override.epp", {
-        'path'      => $systemd_journal_remote::gatewayd::command_path,
-        'arguments' => $_command_arguments,
+          'path'      => $systemd_journal_remote::gatewayd::command_path,
+          'arguments' => $_command_arguments,
       }),
       notify   => Service[$service_name],
     }

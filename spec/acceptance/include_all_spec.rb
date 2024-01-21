@@ -40,7 +40,7 @@ describe 'include all classes' do
   end
 
   describe command('curl -s -o /dev/null -w "%{http_code}" -H"Accept: application/vnd.fdo.journal" http://localhost:19531/machine') do
-    its(:stdout) { is_expected.to match /200/ }
+    its(:stdout) { is_expected.to match(%r{200}) }
   end
 
   # Upload
