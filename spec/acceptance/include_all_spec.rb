@@ -3,8 +3,8 @@ require 'spec_helper_acceptance'
 describe 'include all classes' do
   pp = <<-MANIFEST
     include ::systemd_journal_remote::gatewayd
-    include ::systemd_journal_remote::upload
     include ::systemd_journal_remote::remote
+    include ::systemd_journal_remote::upload
   MANIFEST
 
   it 'applies idempotently' do
