@@ -38,7 +38,7 @@ describe 'systemd_journal_remote::remote' do
         }
 
         # Output
-        describe 'manages output', if: ['CentOS7', 'Debian9'].include?(distro) do
+        describe 'manages output', if: ['CentOS7', 'RedHatEnterpriseServer7', 'Debian9'].include?(distro) do
           it {
             is_expected.to contain_file('/var/log/journal/').with(
               'ensure': 'directory',

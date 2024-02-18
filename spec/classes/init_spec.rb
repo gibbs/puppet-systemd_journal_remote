@@ -16,7 +16,7 @@ describe 'systemd_journal_remote' do
         it { is_expected.to contain_class('systemd_journal_remote') }
 
         # Package
-        if distro == 'CentOS7'
+        if ['CentOS7', 'RedHatEnterpriseServer7'].include?(distro)
           it {
             is_expected.to contain_package('systemd-journal-gateway').with(
               ensure: 'present',
