@@ -24,7 +24,7 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.3'
+          ruby-version: '3.2'
           bundler-cache: true
 
       - name: Run static validations
@@ -69,7 +69,7 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.3'
+          ruby-version: '3.2'
           bundler-cache: true
 
       - name: Provision Testing Environments
